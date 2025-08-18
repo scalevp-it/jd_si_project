@@ -1,0 +1,26 @@
+ {
+  "name": "development-database",
+  "schema_name": "AWS::RDS::DBInstance",
+  "attributes": {
+    "/domain/DBInstanceClass": "db.t3.micro",
+    "/domain/Engine": "mysql",
+    "/domain/EngineVersion": "8.0.35",
+    "/domain/AllocatedStorage": "20",
+    "/domain/DBName": "devdb",
+    "/domain/MasterUsername": "admin",
+    "/domain/BackupRetentionPeriod": 7,
+    "/domain/MultiAZ": false,
+    "/secrets/AWS Credential": {
+      "$source": {
+        "component": "jd-aws",
+        "path": "/secrets/AWS Credential"
+      }
+    },
+    "/domain/extra/Region": {
+      "$source": {
+        "component": "new-ui-region",
+        "path": "/domain/region"
+      }
+    }
+  }
+}

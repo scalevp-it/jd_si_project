@@ -1,0 +1,283 @@
+{
+  "_metadata": {
+    "schema_name": "AWS::EC2::Instance",
+    "schema_id": "01JK0QZHF0TXMJFVE1VK2175EC",
+    "generated_from": "System Initiative API",
+    "generated_at": "auto-generated",
+    "note": "This template uses NEW UI format with attribute paths and $source references",
+    "ui_format": "new",
+    "schema_installed": false,
+    "input_subscriptions_count": 0,
+    "output_subscriptions_count": 0,
+    "required_attributes_analysis": {
+      "required_attributes_found": [
+        {
+          "path": "/domain/ImageId",
+          "reason": "An AMI ID is required to launch an instance (launch templates not used in SI)",
+          "value": "ami-0abcdef1234567890"
+        }
+      ],
+      "required_attributes_missing": [],
+      "conditional_attributes_found": [],
+      "conditional_attributes_missing": []
+    },
+    "requirements_source": "Dynamic AWS CloudFormation Documentation (fetched at runtime)"
+  },
+  "_required_attributes_info": {
+    "description": "Analysis of required vs optional attributes based on LIVE AWS CloudFormation documentation",
+    "fetched_from": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/",
+    "note": "Requirements are fetched dynamically at runtime to ensure accuracy",
+    "required_count": 1,
+    "conditional_count": 0,
+    "coverage": {
+      "required_present": 1,
+      "required_missing": 0,
+      "conditional_present": 0,
+      "conditional_missing": 0
+    }
+  },
+  "_needed_to_deploy": {
+    "description": "Minimal example with only required fields needed for deployment",
+    "includes": "SI essentials + AWS required + AWS region + credentials",
+    "attribute_count": 4,
+    "create_component_request": {
+      "schemaName": "AWS::EC2::Instance",
+      "name": "minimal-component",
+      "attributes": {
+        "/domain/ImageId": "ami-0abcdef1234567890",
+        "/domain/Name": "my-aws-ec2-instance",
+        "/secrets/AWS Credential": {
+          "$source": {
+            "component": "my-aws-credential",
+            "path": "/secrets/AWS Credential"
+          }
+        },
+        "/domain/extra/Region": "us-west-2"
+      }
+    }
+  },
+  "_complete_usage_example": {
+    "description": "Complete ready-to-use example with all available attributes",
+    "copy_paste_ready": true,
+    "create_component_request": {
+      "schemaName": "AWS::EC2::Instance",
+      "name": "demo-component",
+      "attributes": {
+        "/domain/Name": "my-aws-ec2-instance",
+        "/domain/Environment": "development",
+        "/domain/Owner": "team-name",
+        "/secrets/AWS Credential": {
+          "$source": {
+            "component": "my-aws-credential",
+            "path": "/secrets/AWS Credential"
+          }
+        },
+        "/domain/ImageId": "ami-0abcdef1234567890",
+        "/domain/InstanceType": "t3.micro",
+        "/domain/KeyName": "my-key-pair",
+        "/domain/UserData": "#!/bin/bash\necho 'Hello World'",
+        "/domain/BlockDeviceMappings": [
+          {
+            "DeviceName": "/dev/sda1",
+            "Ebs": {
+              "VolumeSize": 20,
+              "VolumeType": "gp3",
+              "DeleteOnTermination": true
+            }
+          }
+        ],
+        "/domain/CpuOptions/CoreCount": 1,
+        "/domain/CpuOptions/ThreadsPerCore": 2,
+        "/domain/CreditSpecification/CPUCredits": "standard",
+        "/domain/CreditSpecification/ElasticGpuSpecifications": [],
+        "/domain/CreditSpecification/ElasticInferenceAccelerators": [],
+        "/domain/EnclaveOptions/Enabled": false,
+        "/domain/HibernationOptions/Configured": false,
+        "/domain/IamInstanceProfile": {
+          "$source": {
+            "component": "my-instance-profile",
+            "path": "/domain/Arn"
+          }
+        },
+        "/domain/extra/Region": "us-west-2",
+        "/domain/InstanceMetadataTags": [
+          {
+            "Key": "Environment",
+            "Value": "development"
+          },
+          {
+            "Key": "Project",
+            "Value": "my-project"
+          }
+        ],
+        "/domain/NetworkInterfaces": [
+          {
+            "DeviceIndex": 0,
+            "SubnetId": "subnet-12345678",
+            "SecurityGroupIds": [
+              "sg-12345678"
+            ],
+            "AssociatePublicIpAddress": true
+          }
+        ],
+        "/domain/SecurityGroupIds": [
+          "sg-12345678"
+        ],
+        "/domain/SecurityGroups": [
+          {
+            "$source": {
+              "component": "my-security-group",
+              "path": "/domain/GroupId"
+            }
+          }
+        ],
+        "/domain/SsmAssociations": [
+          {
+            "DocumentName": "AWS-ConfigureAWSPackage",
+            "Parameters": {
+              "action": "Install",
+              "name": "AmazonCloudWatchAgent"
+            }
+          }
+        ],
+        "/domain/Tags": [
+          {
+            "Key": "Name",
+            "Value": "my-ec2-instance"
+          },
+          {
+            "Key": "Environment",
+            "Value": "development"
+          }
+        ],
+        "/domain/Volumes": [
+          {
+            "Device": "/dev/sda1",
+            "VolumeId": {
+              "$source": {
+                "component": "my-ebs-volume",
+                "path": "/domain/VolumeId"
+              }
+            }
+          }
+        ],
+        "/domain/PrivateDnsNameOptions": {
+          "EnableResourceNameDnsARecord": true,
+          "EnableResourceNameDnsAAAARecord": false,
+          "HostnameType": "ip-name"
+        }
+      }
+    }
+  },
+  "templates": [
+    {
+      "name": "my-aws-ec2-instance",
+      "schema_name": "AWS::EC2::Instance",
+      "attributes": {
+        "/domain/Name": "my-aws-ec2-instance",
+        "/domain/Environment": "development",
+        "/domain/Owner": "team-name",
+        "/secrets/AWS Credential": {
+          "$source": {
+            "component": "my-aws-credential",
+            "path": "/secrets/AWS Credential"
+          }
+        },
+        "/domain/ImageId": "ami-0abcdef1234567890",
+        "/domain/InstanceType": "t3.micro",
+        "/domain/KeyName": "my-key-pair",
+        "/domain/UserData": "#!/bin/bash\necho 'Hello World'",
+        "/domain/BlockDeviceMappings": [
+          {
+            "DeviceName": "/dev/sda1",
+            "Ebs": {
+              "VolumeSize": 20,
+              "VolumeType": "gp3",
+              "DeleteOnTermination": true
+            }
+          }
+        ],
+        "/domain/CpuOptions/CoreCount": 1,
+        "/domain/CpuOptions/ThreadsPerCore": 2,
+        "/domain/CreditSpecification/CPUCredits": "standard",
+        "/domain/CreditSpecification/ElasticGpuSpecifications": [],
+        "/domain/CreditSpecification/ElasticInferenceAccelerators": [],
+        "/domain/EnclaveOptions/Enabled": false,
+        "/domain/HibernationOptions/Configured": false,
+        "/domain/IamInstanceProfile": {
+          "$source": {
+            "component": "my-instance-profile",
+            "path": "/domain/Arn"
+          }
+        },
+        "/domain/extra/Region": "us-west-2",
+        "/domain/InstanceMetadataTags": [
+          {
+            "Key": "Environment",
+            "Value": "development"
+          },
+          {
+            "Key": "Project",
+            "Value": "my-project"
+          }
+        ],
+        "/domain/NetworkInterfaces": [
+          {
+            "DeviceIndex": 0,
+            "SubnetId": "subnet-12345678",
+            "SecurityGroupIds": [
+              "sg-12345678"
+            ],
+            "AssociatePublicIpAddress": true
+          }
+        ],
+        "/domain/SecurityGroupIds": [
+          "sg-12345678"
+        ],
+        "/domain/SecurityGroups": [
+          {
+            "$source": {
+              "component": "my-security-group",
+              "path": "/domain/GroupId"
+            }
+          }
+        ],
+        "/domain/SsmAssociations": [
+          {
+            "DocumentName": "AWS-ConfigureAWSPackage",
+            "Parameters": {
+              "action": "Install",
+              "name": "AmazonCloudWatchAgent"
+            }
+          }
+        ],
+        "/domain/Tags": [
+          {
+            "Key": "Name",
+            "Value": "my-ec2-instance"
+          },
+          {
+            "Key": "Environment",
+            "Value": "development"
+          }
+        ],
+        "/domain/Volumes": [
+          {
+            "Device": "/dev/sda1",
+            "VolumeId": {
+              "$source": {
+                "component": "my-ebs-volume",
+                "path": "/domain/VolumeId"
+              }
+            }
+          }
+        ],
+        "/domain/PrivateDnsNameOptions": {
+          "EnableResourceNameDnsARecord": true,
+          "EnableResourceNameDnsAAAARecord": false,
+          "HostnameType": "ip-name"
+        }
+      }
+    }
+  ]
+}

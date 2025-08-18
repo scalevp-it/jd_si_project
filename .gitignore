@@ -1,0 +1,98 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+
+# SI specific
+si_session_cache.json
+
+# Component configurations with sensitive data
+component_configs/current_components/*.json
+!component_configs/current_components/README.md
+component_configs/component_templates/*_real_*.json
+component_configs/component_templates/*_prod_*.json
+
+# Generated and temporary files
+debug_*.py
+temp_*.py
+*.generated.*
+extraction_summary_*.json
+changeset_*.json
+
+# API credentials and tokens
+*token*
+*credential*
+*secret*
+
+# Virtual environments
+venv/
+.venv/
+ENV/
+env/
+pyvenv.cfg
+
+# Test results
+.pytest_cache/
+.coverage
+htmlcov/
+test_results/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# Backup files
+*.bak
+*.backup
+*.old
+*.orig
+*.tmp
+
+# Cache directories
+.cache/
+*.cache

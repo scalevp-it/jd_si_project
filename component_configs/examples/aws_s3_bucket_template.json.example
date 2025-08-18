@@ -1,0 +1,104 @@
+{
+  "_metadata": {
+    "schema_name": "AWS::S3::Bucket",
+    "schema_id": "01JK1AYWG9RRVECBHEK3B198JH",
+    "generated_from": "System Initiative API",
+    "generated_at": "auto-generated",
+    "note": "This template uses NEW UI format with attribute paths and $source references",
+    "ui_format": "new",
+    "schema_installed": false,
+    "input_subscriptions_count": 0,
+    "output_subscriptions_count": 0,
+    "required_attributes_analysis": {
+      "required_attributes_found": [],
+      "required_attributes_missing": [],
+      "conditional_attributes_found": [],
+      "conditional_attributes_missing": []
+    },
+    "requirements_source": "Dynamic AWS CloudFormation Documentation (fetched at runtime)"
+  },
+  "_required_attributes_info": {
+    "description": "Analysis of required vs optional attributes based on LIVE AWS CloudFormation documentation",
+    "fetched_from": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/",
+    "note": "Requirements are fetched dynamically at runtime to ensure accuracy",
+    "required_count": 0,
+    "conditional_count": 0,
+    "coverage": {
+      "required_present": 0,
+      "required_missing": 0,
+      "conditional_present": 0,
+      "conditional_missing": 0
+    }
+  },
+  "_needed_to_deploy": {
+    "description": "Minimal example with only required fields needed for deployment",
+    "includes": "SI essentials + AWS required + AWS region + credentials",
+    "attribute_count": 3,
+    "create_component_request": {
+      "schemaName": "AWS::S3::Bucket",
+      "name": "minimal-component",
+      "attributes": {
+        "/domain/Name": "my-aws-s3-bucket",
+        "/secrets/AWS Credential": {
+          "$source": {
+            "component": "my-aws-credential",
+            "path": "/secrets/AWS Credential"
+          }
+        },
+        "/domain/extra/Region": "us-west-2"
+      }
+    }
+  },
+  "_complete_usage_example": {
+    "description": "Complete ready-to-use example with all available attributes",
+    "copy_paste_ready": true,
+    "create_component_request": {
+      "schemaName": "AWS::S3::Bucket",
+      "name": "demo-component",
+      "attributes": {
+        "/domain/Name": "my-aws-s3-bucket",
+        "/domain/Environment": "development",
+        "/domain/Owner": "team-name",
+        "/secrets/AWS Credential": {
+          "$source": {
+            "component": "my-aws-credential",
+            "path": "/secrets/AWS Credential"
+          }
+        },
+        "/domain/extra/Region": "us-west-2",
+        "/domain/BucketName": "my-bucket-aws-s3-bucket-4189",
+        "/domain/PublicAccessBlockConfiguration": {
+          "BlockPublicAcls": true,
+          "BlockPublicPolicy": true,
+          "IgnorePublicAcls": true,
+          "RestrictPublicBuckets": true
+        }
+      }
+    }
+  },
+  "templates": [
+    {
+      "name": "my-aws-s3-bucket",
+      "schema_name": "AWS::S3::Bucket",
+      "attributes": {
+        "/domain/Name": "my-aws-s3-bucket",
+        "/domain/Environment": "development",
+        "/domain/Owner": "team-name",
+        "/secrets/AWS Credential": {
+          "$source": {
+            "component": "my-aws-credential",
+            "path": "/secrets/AWS Credential"
+          }
+        },
+        "/domain/extra/Region": "us-west-2",
+        "/domain/BucketName": "my-bucket-aws-s3-bucket-4189",
+        "/domain/PublicAccessBlockConfiguration": {
+          "BlockPublicAcls": true,
+          "BlockPublicPolicy": true,
+          "IgnorePublicAcls": true,
+          "RestrictPublicBuckets": true
+        }
+      }
+    }
+  ]
+}
