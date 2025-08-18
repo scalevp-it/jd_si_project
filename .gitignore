@@ -96,3 +96,6 @@ test_results/
 # Cache directories
 .cache/
 *.cache
+
+# Project documentation
+CLAUDE.md
