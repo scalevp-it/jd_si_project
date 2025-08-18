@@ -1,0 +1,5 @@
+{
+  "name": "test-s3-bucket",
+  "schema_name": "AWS::S3::Bucket",
+  "attributes": {}
+}

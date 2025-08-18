@@ -1,0 +1,59 @@
+[
+  {
+    "name": "production-web-server",
+    "schema_name": "AWS EC2 Instance",
+    "attributes": {
+      "InstanceType": "t3.medium",
+      "ImageId": "ami-0c02fb55956c7d316",
+      "KeyName": "production-keypair",
+      "SecurityGroups": [
+        "web-server-sg"
+      ],
+      "UserData": "#!/bin/bash\nyum update -y\nyum install -y httpd\nsystemctl start httpd\nsystemctl enable httpd"
+    },
+    "domain": {
+      "Name": "ProductionWebServer",
+      "Environment": "production",
+      "Owner": "devops-team",
+      "CostCenter": "engineering",
+      "Project": "main-website"
+    }
+  },
+  {
+    "name": "development-database",
+    "schema_name": "AWS RDS Instance",
+    "attributes": {
+      "DBInstanceClass": "db.t3.micro",
+      "Engine": "mysql",
+      "EngineVersion": "8.0.35",
+      "AllocatedStorage": 20,
+      "DBName": "devdb",
+      "MasterUsername": "admin",
+      "BackupRetentionPeriod": 7,
+      "MultiAZ": false
+    },
+    "domain": {
+      "Name": "DevelopmentDatabase",
+      "Environment": "development",
+      "Owner": "dev-team"
+    },
+    "secrets": {
+      "MasterUserPassword": "{{SECRET:db-password}}"
+    }
+  },
+  {
+    "name": "main-vpc",
+    "schema_name": "AWS VPC",
+    "attributes": {
+      "CidrBlock": "10.0.0.0/16",
+      "EnableDnsHostnames": true,
+      "EnableDnsSupport": true,
+      "InstanceTenancy": "default"
+    },
+    "domain": {
+      "Name": "MainVPC",
+      "Environment": "production",
+      "Owner": "network-team"
+    }
+  }
+]

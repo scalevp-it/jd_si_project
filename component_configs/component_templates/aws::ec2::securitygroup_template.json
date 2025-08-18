@@ -1,0 +1,12 @@
+{
+  "name": "my-aws::ec2::securitygroup",
+  "schema_name": "AWS::EC2::SecurityGroup",
+  "attributes": {
+    "// Add schema-specific attributes here": "value"
+  },
+  "domain": {
+    "Name": "MyAWS::EC2::SecurityGroup",
+    "Environment": "development",
+    "Owner": "team-name"
+  }
+}
